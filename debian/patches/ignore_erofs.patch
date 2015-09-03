@@ -1,0 +1,15 @@
+Index: procps-3.3.9/sysctl.c
+===================================================================
+--- procps-3.3.9.orig/sysctl.c	2015-02-10 13:52:16.358295055 -0500
++++ procps-3.3.9/sysctl.c	2015-02-10 13:52:16.354295132 -0500
+@@ -436,6 +436,10 @@
+ 			xwarnx(_("permission denied on key '%s'"), outname);
+ 			rc = 0;
+ 			break;
++		case EROFS:
++			xwarn(_("setting key \"%s\""), outname);
++			rc = 0;
++			break;
+ 		default:
+ 			xwarn(_("setting key \"%s\""), outname);
+ 			rc = -1;

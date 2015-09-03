@@ -1,0 +1,68 @@
+--- procps-3.3.8.orig/top/top.c
++++ procps-3.3.8/top/top.c
+@@ -2215,12 +2215,12 @@ static void zap_fieldstab (void) {
+    char buf[8];
+ 
+    if (!once) {
+-      Fieldstab[P_PID].width = Fieldstab[P_PPD].width
++      Fieldstab[TOP_P_PID].width = Fieldstab[P_PPD].width
+          = Fieldstab[P_PGD].width = Fieldstab[P_SID].width
+          = Fieldstab[P_TGD].width = Fieldstab[P_TPG].width = 5;
+       if (5 < (digits = get_pid_digits())) {
+          if (10 < digits) error_exit(N_txt(FAIL_widepid_txt));
+-         Fieldstab[P_PID].width = Fieldstab[P_PPD].width
++         Fieldstab[TOP_P_PID].width = Fieldstab[P_PPD].width
+             = Fieldstab[P_PGD].width = Fieldstab[P_SID].width
+             = Fieldstab[P_TGD].width = Fieldstab[P_TPG].width = digits;
+       }
+@@ -4766,7 +4766,7 @@ static void keys_xtra (int ch) {
+ //       xmsg = "Memory";
+          break;
+       case 'N':
+-         w->rc.sortindx = P_PID;
++         w->rc.sortindx = TOP_P_PID;
+ //       xmsg = "Numerical";
+          break;
+       case 'P':
+@@ -5226,7 +5226,7 @@ static const char *task_show (const WIN_
+          case P_PGD:
+             cp = make_num(p->pgrp, W, Jn, AUTOX_NO);
+             break;
+-         case P_PID:
++         case TOP_P_PID:
+             cp = make_num(p->tid, W, Jn, AUTOX_NO);
+             break;
+          case P_PPD:
+--- procps-3.3.8.orig/top/top.h
++++ procps-3.3.8/top/top.h
+@@ -178,7 +178,7 @@ char *strcasestr(const char *haystack, c
+         /* Flags for each possible field (and then some) --
+            these MUST be kept in sync with the FLD_t Fieldstab[] array !! */
+ enum pflag {
+-   P_PID = 0, P_PPD,
++   TOP_P_PID = 0, P_PPD,
+    P_UED, P_UEN, P_URD, P_URN, P_USD, P_USN,
+    P_GID, P_GRP, P_PGD, P_TTY, P_TPG, P_SID,
+    P_PRI, P_NCE, P_THD,
+@@ -596,7 +596,7 @@ typedef struct WIN_t {
+    { P_CPU, DEF_WINFLGS, 0, \
+       COLOR_RED, COLOR_RED, COLOR_YELLOW, COLOR_RED, \
+       "Def", DEF_FIELDS }, \
+-   { P_PID, DEF_WINFLGS, 0, \
++   { TOP_P_PID, DEF_WINFLGS, 0, \
+       COLOR_CYAN, COLOR_CYAN, COLOR_WHITE, COLOR_CYAN, \
+       "Job", JOB_FIELDS }, \
+    { P_MEM, DEF_WINFLGS, 0, \
+--- procps-3.3.8.orig/top/top_nls.c
++++ procps-3.3.8/top/top_nls.c
+@@ -121,8 +121,8 @@ static void build_two_nlstabs (void) {
+    . */
+ 
+ /* Translation Hint: maximum 'PID' = 5 */
+-   Head_nlstab[P_PID] = _("PID");
+-   Desc_nlstab[P_PID] = _("Process Id");
++   Head_nlstab[TOP_P_PID] = _("PID");
++   Desc_nlstab[TOP_P_PID] = _("Process Id");
+ /* Translation Hint: maximum 'PPID' = 5 */
+    Head_nlstab[P_PPD] = _("PPID");
+    Desc_nlstab[P_PPD] = _("Parent Process pid");
