@@ -1,7 +1,0 @@
-uptime_test
-ignore_eaccess.patch
-testsuite_unsupp
-pmap_test
-libtool-update.diff
-/p_pid-enum.diff
-ignore_erofs.patch
