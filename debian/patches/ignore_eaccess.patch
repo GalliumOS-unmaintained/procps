@@ -1,0 +1,19 @@
+Description: Ignore EACCESS when writing a new setting
+ If we are running in a container, we're not allowed to write to any
+ non-namespaced sysctls.
+Author: Serge Hallyn <serge.hallyn@ubuntu.com>
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/procps/+bug/1157643
+
+Index: procps-3.3.3/sysctl.c
+===================================================================
+--- procps-3.3.3.orig/sysctl.c	2012-05-08 06:08:36.000000000 -0500
++++ procps-3.3.3/sysctl.c	2013-10-16 13:44:56.541389676 -0500
+@@ -434,7 +434,7 @@ static int WriteSetting(const char *sett
+ 			break;
+ 		case EACCES:
+ 			xwarnx(_("permission denied on key '%s'"), outname);
+-			rc = -1;
++			rc = 0;
+ 			break;
+ 		default:
+ 			xwarn(_("setting key \"%s\""), outname);
