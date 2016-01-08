@@ -1,3 +1,21 @@
+procps (1:3.3.9-1ubuntu8-galliumos1) vivid; urgency=medium
+
+  * Modified /etc/sysctl.conf to change rr_interval to 6 
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Tue, 27 Oct 2015 13:53:27 -0500
+
+procps (1:3.3.9.3-1ubuntu8) vivid; urgency=medium
+
+  * Modified /etc/sysctl.conf to reduce swapiness to 10
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Mon, 26 Oct 2015 13:53:27 -0500
+
+procps (1:3.3.9.3-1ubuntu7) vivid; urgency=medium
+
+  * Modified /etc/sysctl.conf
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Tue, 06 Oct 2015 13:53:27 -0500
+
 procps (1:3.3.9-1ubuntu8) vivid; urgency=medium
 
   * ignore_erofs.patch: Same as ignore_eaccess but for the case where
