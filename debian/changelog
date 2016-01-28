@@ -1,3 +1,9 @@
+procps (1:3.3.9-1ubuntu8-galliumos2) vivid; urgency=medium
+
+  * Modified /etc/sysctl.conf to change vm.dirty* settings
+
+ -- Hugh Greenberg <hugh@galliumos.org>  Wed, 27 Jan 2016 13:53:27 -0500
+
 procps (1:3.3.9-1ubuntu8-galliumos1) vivid; urgency=medium
 
   * Modified /etc/sysctl.conf to change rr_interval to 6 
